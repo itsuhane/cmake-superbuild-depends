@@ -36,4 +36,8 @@ if(NOT TARGET depends::ceres-solver)
       ${depends-ceres-solver_SOURCE_DIR}/include
   )
   target_link_libraries(depends::ceres-solver INTERFACE ceres)
+  set(depends-ceres-solver-source-dir ${depends-ceres-solver_SOURCE_DIR} CACHE INTERNAL "" FORCE)
+  set(depends-ceres-solver-binary-dir ${depends-ceres-solver_BINARY_DIR} CACHE INTERNAL "" FORCE)
+  mark_as_advanced(depends-ceres-solver-source-dir)
+  mark_as_advanced(depends-ceres-solver-binary-dir)
 endif()
