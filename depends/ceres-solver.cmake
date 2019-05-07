@@ -27,7 +27,8 @@ if(NOT TARGET depends::ceres-solver)
   set(OPENMP OFF CACHE BOOL "" FORCE)
   set(LAPACK ON CACHE BOOL "" FORCE)
   set(MINIGLOG_MAX_LOG_LEVEL 0 CACHE STRING "" FORCE)
-  set(EIGEN_INCLUDE_DIR ${depends-eigen_SOURCE_DIR} CACHE PATH "" FORCE)
+  set(EIGEN_PREFER_EXPORTED_EIGEN_CMAKE_CONFIGURATION OFF CACHE BOOL "" FORCE)
+  set(EIGEN_INCLUDE_DIR ${depends-eigen-source-dir} CACHE PATH "" FORCE)
   add_subdirectory(${depends-ceres-solver_SOURCE_DIR} ${depends-ceres-solver_BINARY_DIR})
   target_include_directories(depends::ceres-solver
     INTERFACE
