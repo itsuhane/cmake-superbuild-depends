@@ -3,7 +3,7 @@ if(NOT TARGET depends::eigen)
   if(TARGET options::moderncpp)
     target_link_libraries(depends::eigen INTERFACE options::moderncpp)
   else()
-    message(FATAL_ERROR "depends::eigen depends on options::moderncpp")
+    message(FATAL_ERROR "depends::eigen expects options::moderncpp")
   endif()
   FetchContent_Declare(
     depends-eigen3
