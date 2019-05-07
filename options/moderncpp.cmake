@@ -7,6 +7,6 @@ if(NOT TARGET options::moderncpp)
   elseif(TARGET options::cpp11)
     target_link_libraries(options::moderncpp INTERFACE options::cpp11)
   else()
-    message(FATAL_ERROR "options::moderncpp depends on options::cpp11 or above."
+    message(FATAL_ERROR "options::moderncpp expects options::cpp11 or above."
   endif()
 endif()
