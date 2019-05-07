@@ -1,5 +1,10 @@
 if(NOT TARGET depends::ceres)
   add_library(depends::ceres INTERFACE IMPORTED GLOBAL)
+  if(TARGET depends::eigen)
+    target_link_libraries(depends::ceres INTERFACE depends::eigen)
+  else()
+    message(FATAL_ERROR "depends::ceres expects depends::eigen")
+  endif()
   FetchContent_Declare(
     depends-ceres
     GIT_REPOSITORY https://github.com/ceres-solver/ceres-solver.git
