@@ -6,16 +6,16 @@ if(NOT TARGET depends::eigen)
     message(FATAL_ERROR "depends::eigen expects options::moderncpp")
   endif()
   FetchContent_Declare(
-    depends-eigen3
+    depends-eigen
     GIT_REPOSITORY https://github.com/eigenteam/eigen-git-mirror.git
     GIT_TAG        3.3.7
   )
-  FetchContent_GetProperties(depends-eigen3)
-  if(NOT depends-eigen3_POPULATED)
+  FetchContent_GetProperties(depends-eigen)
+  if(NOT depends-eigen_POPULATED)
     message(STATUS "Fetching Eigen3 sources")
-    FetchContent_Populate(depends-eigen3)
+    FetchContent_Populate(depends-eigen)
     message(STATUS "Fetching Eigen3 sources - done")
   endif()
-  target_include_directories(depends::eigen INTERFACE ${depends-eigen3_SOURCE_DIR})
+  target_include_directories(depends::eigen INTERFACE ${depends-eigen_SOURCE_DIR})
   target_link_libraries(depends::eigen INTERFACE options::moderncpp)
 endif()
