@@ -1,6 +1,6 @@
 if(NOT TARGET depends::yaml-cpp)
-  if(NOT TARGET options::moderncpp)
-    message(FATAL_ERROR "depends::yaml-cpp expects options::moderncpp")
+  if(NOT TARGET options::modern-cpp)
+    message(FATAL_ERROR "depends::yaml-cpp expects options::modern-cpp")
   endif()
   FetchContent_Declare(
     depends-yaml-cpp
@@ -20,7 +20,7 @@ if(NOT TARGET depends::yaml-cpp)
   add_subdirectory(${depends-yaml-cpp_SOURCE_DIR} ${depends-yaml-cpp_BINARY_DIR})
   add_library(depends::yaml-cpp INTERFACE IMPORTED GLOBAL)
   target_include_directories(depends::yaml-cpp INTERFACE ${depends-yaml-cpp_SOURCE_DIR}/include)
-  target_link_libraries(depends::yaml-cpp INTERFACE yaml-cpp options::moderncpp)
+  target_link_libraries(depends::yaml-cpp INTERFACE yaml-cpp options::modern-cpp)
   set(depends-yaml-cpp-source-dir ${depends-yaml-cpp_SOURCE_DIR} CACHE INTERNAL "" FORCE)
   set(depends-yaml-cpp-binary-dir ${depends-yaml-cpp_BINARY_DIR} CACHE INTERNAL "" FORCE)
   mark_as_advanced(depends-yaml-cpp-source-dir)

@@ -1,8 +1,5 @@
 if(NOT TARGET depends::ceres-solver)
-  add_library(depends::ceres-solver INTERFACE IMPORTED GLOBAL)
-  if(TARGET depends::eigen)
-    target_link_libraries(depends::ceres-solver INTERFACE depends::eigen)
-  else()
+  if(NOT TARGET depends::eigen)
     message(FATAL_ERROR "depends::ceres-solver expects depends::eigen")
   endif()
   FetchContent_Declare(
@@ -30,13 +27,14 @@ if(NOT TARGET depends::ceres-solver)
   set(EIGEN_PREFER_EXPORTED_EIGEN_CMAKE_CONFIGURATION OFF CACHE BOOL "" FORCE)
   set(EIGEN_INCLUDE_DIR ${depends-eigen-source-dir} CACHE PATH "" FORCE)
   add_subdirectory(${depends-ceres-solver_SOURCE_DIR} ${depends-ceres-solver_BINARY_DIR})
+  add_library(depends::ceres-solver INTERFACE IMPORTED GLOBAL)
   target_include_directories(depends::ceres-solver
     INTERFACE
       ${depends-ceres-solver_BINARY_DIR}/config
       ${depends-ceres-solver_SOURCE_DIR}/internal/ceres/miniglog
       ${depends-ceres-solver_SOURCE_DIR}/include
   )
-  target_link_libraries(depends::ceres-solver INTERFACE ceres)
+  target_link_libraries(depends::ceres-solver INTERFACE ceres depends::eigen)
   set(depends-ceres-solver-source-dir ${depends-ceres-solver_SOURCE_DIR} CACHE INTERNAL "" FORCE)
   set(depends-ceres-solver-binary-dir ${depends-ceres-solver_BINARY_DIR} CACHE INTERNAL "" FORCE)
   mark_as_advanced(depends-ceres-solver-source-dir)

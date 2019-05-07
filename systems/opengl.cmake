@@ -1,6 +1,6 @@
 if(NOT TARGET depends::opengl)
-  add_library(depends::opengl INTERFACE IMPORTED GLOBAL)
   find_package(OpenGL REQUIRED)
+  add_library(depends::opengl INTERFACE IMPORTED GLOBAL)
   target_include_directories(depends::opengl INTERFACE ${OPENGL_INCLUDE_DIR})
   target_link_libraries(depends::opengl INTERFACE ${OPENGL_gl_LIBRARY})
 endif()

@@ -1,5 +1,4 @@
 if(NOT TARGET depends::glfw)
-  add_library(depends::glfw INTERFACE IMPORTED GLOBAL)
   FetchContent_Declare(
     depends-glfw
     GIT_REPOSITORY https://github.com/glfw/glfw.git
@@ -15,5 +14,10 @@ if(NOT TARGET depends::glfw)
   set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
   set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
   add_subdirectory(${depends-glfw_SOURCE_DIR} ${depends-glfw_BINARY_DIR})
+  add_library(depends::glfw INTERFACE IMPORTED GLOBAL)
   target_link_libraries(depends::glfw INTERFACE glfw)
+  set(depends-glfw-source-dir ${depends-glfw_SOURCE_DIR} CACHE INTERNAL "" FORCE)
+  set(depends-glfw-binary-dir ${depends-glfw_BINARY_DIR} CACHE INTERNAL "" FORCE)
+  mark_as_advanced(depends-glfw-source-dir)
+  mark_as_advanced(depends-glfw-binary-dir)
 endif()
