@@ -4,7 +4,7 @@ CMake scripts for managing dependencies in a superbuild project.
 
 ## Goal
 
-- **Not another package manager**
+- **Not another package manager**.
 - Build the entire dependency tree.
 - Make dependency version managed.
 - Make multiple use of a same dependency consistent.
