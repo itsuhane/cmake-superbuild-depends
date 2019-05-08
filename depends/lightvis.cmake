@@ -2,7 +2,7 @@ if(NOT TARGET depends::lightvis)
   FetchContent_Declare(
     depends-lightvis
     GIT_REPOSITORY https://github.com/itsuhane/lightvis.git
-    GIT_TAG        f0566e1
+    GIT_TAG        master
   )
   FetchContent_GetProperties(depends-lightvis)
   if(NOT depends-lightvis_POPULATED)

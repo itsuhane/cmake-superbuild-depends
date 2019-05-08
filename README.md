@@ -61,17 +61,6 @@ This means that when critical dependency is missing, you will be prompted with e
 In this way, the project owner will be notified about what will be introduced into the building process and will have a chance to review them.  
 As for `managed depend`, it is intended for subprojects built for the topmost projects, so the owner should be aware of the dependencies it contains.
 
-## Creating `managed` Project
-
-A project can be `managed` if **all its dependencies are imported with** `cmake-superbuild-depends`.  
-In this case, simply export your target in the `CMakeLists.txt`:
-
-```CMake
-export(TARGET MyTarget NAMESPACE MyNamespace:: FILE MyTargetConfig.cmake)
-```
-
-Then, create the corresponding dependency import script.
-
 ## Internal: Creating Import Script
 
 ```CMake
@@ -83,3 +72,5 @@ if(NOT TARGET depends::my-target)
   # add configurations for depends::my-target
 endif()
 ```
+
+A project can be `managed` if **all its dependencies are imported with** `cmake-superbuild-depends`.  
