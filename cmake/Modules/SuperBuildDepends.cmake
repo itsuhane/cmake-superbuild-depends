@@ -35,6 +35,8 @@ if(NOT super-build-depends_POPULATED)
   message(STATUS "Fetching SuperBuildDepends scripts - done")
 endif()
 
+list(APPEND CMAKE_MODULE_PATH "${super-build-depends_SOURCE_DIR}/cmake/Modules")
+
 if(NOT COMMAND superbuild_option)
   function(superbuild_option option_name)
     include("${super-build-depends_SOURCE_DIR}/options/${option_name}.cmake")
