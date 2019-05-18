@@ -21,7 +21,7 @@ if(NOT TARGET depends::yaml-cpp)
   add_library(depends::yaml-cpp INTERFACE IMPORTED GLOBAL)
   if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     target_compile_definitions(yaml-cpp
-      INTERFACE
+      PUBLIC
         _NOEXCEPT=noexcept
     )
   endif()
