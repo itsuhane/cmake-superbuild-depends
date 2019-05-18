@@ -20,7 +20,7 @@ if(NOT TARGET depends::yaml-cpp)
   add_subdirectory(${depends-yaml-cpp_SOURCE_DIR} ${depends-yaml-cpp_BINARY_DIR})
   add_library(depends::yaml-cpp INTERFACE IMPORTED GLOBAL)
   if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
-    target_compile_definitions(depends::yaml-cpp
+    target_compile_definitions(yaml-cpp
       INTERFACE
         _NOEXCEPT=noexcept
     )
