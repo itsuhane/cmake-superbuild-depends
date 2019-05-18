@@ -19,6 +19,12 @@ if(NOT TARGET depends::yaml-cpp)
   set(YAML_CPP_INSTALL OFF CACHE BOOL "" FORCE)
   add_subdirectory(${depends-yaml-cpp_SOURCE_DIR} ${depends-yaml-cpp_BINARY_DIR})
   add_library(depends::yaml-cpp INTERFACE IMPORTED GLOBAL)
+  if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+    target_compile_definitions(depends::yaml-cpp
+      INTERFACE
+        _NOEXCEPT=noexcept
+    )
+  endif()
   target_include_directories(depends::yaml-cpp INTERFACE ${depends-yaml-cpp_SOURCE_DIR}/include)
   target_link_libraries(depends::yaml-cpp INTERFACE yaml-cpp options::modern-cpp)
   set(depends-yaml-cpp-source-dir ${depends-yaml-cpp_SOURCE_DIR} CACHE INTERNAL "" FORCE)
