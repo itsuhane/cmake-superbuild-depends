@@ -5,7 +5,7 @@ if(NOT TARGET depends::ceres-solver)
   FetchContent_Declare(
     depends-ceres-solver
     GIT_REPOSITORY https://github.com/ceres-solver/ceres-solver.git
-    GIT_TAG        1.14.0
+    GIT_TAG        e809cf0c2879f521078b4c9e6329390b42ecf722 # 1.14.0 with std::function fix.
   )
   FetchContent_GetProperties(depends-ceres-solver)
   if(NOT depends-ceres-solver_POPULATED)
